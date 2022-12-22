@@ -70,7 +70,7 @@ export default function Allstud() {
                     {getstud.filter((val) => {
                         if (searchInput == "") {
                             return val
-                        } else if (parseFloat(val.contact) == parseFloat(searchInput)) {
+                        } else if (val.name.toLowerCase().includes(searchInput.toLowerCase())) {
                             return val;
                         }
                     }).map((result, id) => {
