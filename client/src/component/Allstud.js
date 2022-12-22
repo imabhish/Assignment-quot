@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import Avatar from 'react-avatar';
 
 export default function Allstud() {
 
@@ -59,7 +59,8 @@ export default function Allstud() {
         <div className='container mt-5'>
 
             <div className="ms-left w-50">
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Search User"
+                <input type="email" className="form-control"
+                    placeholder="Search User"
                     onChange={(e) => searchStud(e.target.value)}
                 />
             </div>
@@ -68,30 +69,27 @@ export default function Allstud() {
 
                 <tbody>
                     {getstud.filter((val) => {
-                        if (searchInput == "") {
+                        if (searchInput === "") {
                             return val
                         } else if (val.name.toLowerCase().includes(searchInput.toLowerCase())) {
                             return val;
                         }
-                    }).map((result, id) => {
+                    }).map((item) => {
                         return (
                             <>
 
-                                <div class="col-sm">
-                                    <div class="col-sm-6">
-                                        <div class="card">
+                                <div className="col-sm">
+                                    <div className="col-sm-6">
+                                        <div className="card" >
+                                            <div className="card-body">
+                                                <Avatar githubHandle="sitebase" className='text-center' cla size={50} round="20px" />
+                                                <h5 className="card-title">User Id: {item._id}</h5>
+                                                <p className="card-text">Name: {item.name}</p>
+                                                <p className="card-text">Contact: {item.contact}</p>
 
-                                            <div class="card-body">
-
-                                                <h5 class="card-title">{result._id}</h5>
-                                                <h5 class="card-title">{result.photo}</h5>
-
-                                                <p class="card-text">{result.name}</p>
-                                                <p class="card-text">{result.contact}</p>
-
-                                                <Link className='btn btn-warning ms-2' to={`/edit/${result._id}`}>Update</Link>
+                                                <Link className='btn btn-warning ms-2' to={`/edit/${item._id}`}>Update</Link>
                                                 <button className='btn btn-danger ms-2'
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => deletestud(result._id)}>Delete</button>
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => deletestud(item._id)}>Delete</button>
                                             </div>
                                         </div>
                                     </div>

@@ -86,11 +86,10 @@ export default function Edit() {
     return (
         <div className='container mt-5'>
             <h4>Edit Student Information</h4>
-            <div className='underline1'></div>
             <form className='mt-5 shadow p-5 w-75'>
                 <div className="mb-3">
                     <label htmlFor="exampleFormControlInput1"
-                        className="form-label">Student Name</label>
+                        className="form-label">User Name</label>
                     <input type="text" className="form-control"
                         placeholder="Enter Student Name"
                         onChange={setstud} name="name"
@@ -98,14 +97,14 @@ export default function Edit() {
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="exampleFormControlInput1" className="form-label">Student Mobile</label>
+                    <label htmlFor="exampleFormControlInput1" className="form-label">User Mobile</label>
                     <input type="number" className="form-control"
                         placeholder="Enter Contact Number"
                         onChange={setstud} name="contact"
                         value={inputdata.contact} />
                 </div>
                 <div className='d-flex'>
-                    <button className='btn btn-warning ms-2' onClick={updatestud}>update Student</button>
+                    <button className='btn btn-warning ms-2' onClick={updatestud}>Update User</button>
                     <ToastContainer />
                     <NavLink className='btn btn-primary ms-auto' to="/">Back to Home</NavLink>
                 </div>
