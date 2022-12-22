@@ -77,7 +77,7 @@ export default function Edit() {
             progress: undefined,
         });
         setTimeout(() => {
-            navigate('/allstud');
+            navigate('/');
         }, 3000);
 
 

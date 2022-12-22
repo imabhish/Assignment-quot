@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Allstud() {
 
     const [getstud, SetGetstud] = useState([]);
+    const navigate = useNavigate();
+
     //console.log(getstud)
     //get student Data
     const getstuddata = async () => {
@@ -46,7 +52,15 @@ export default function Allstud() {
             console.log("error");
         } else {
             getstuddata();
-
+            toast.success('Deleted', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
 
     }
@@ -90,6 +104,8 @@ export default function Allstud() {
                                                 <Link className='btn btn-warning ms-2' to={`/edit/${item._id}`}>Update</Link>
                                                 <button className='btn btn-danger ms-2'
                                                     data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => deletestud(item._id)}>Delete</button>
+                                                <ToastContainer />
+
                                             </div>
                                         </div>
                                     </div>
